@@ -3,13 +3,14 @@ import logo from "./logo.svg";
 import "./App.css";
 import { AppBar, Toolbar } from "@material-ui/core";
 import Login from "./components/Login";
+import "typeface-roboto";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <AppBar position="static">
-          <Toolbar>This is our header</Toolbar>
+          <Toolbar>My Music App</Toolbar>
         </AppBar>
         <Login />
       </div>
