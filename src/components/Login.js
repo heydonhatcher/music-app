@@ -17,7 +17,7 @@ class Login extends Component {
 
   submit = e => {
     e.preventDefault();
-    if (this.state.pass == "password") {
+    if (this.state.pass === "password") {
       this.setState({ loggedIn: true });
     }
   };
