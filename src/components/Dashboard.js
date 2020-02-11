@@ -6,7 +6,7 @@ import { Card, CardContent, Typography } from "@material-ui/core";
 
 class Dashboard extends Component {
   state = {
-    notifications: []
+    notifications: ["hi"]
   };
 
   render() {
@@ -31,6 +31,13 @@ class Dashboard extends Component {
         >
           System Notifications:
         </h2>
+        {this.state.notifications.map(notification => {
+          return (
+            <p style={{ fontSize: "25px", color: "red", textAlign: "center" }}>
+              {notification}
+            </p>
+          );
+        })}
       </div>
     );
   }
