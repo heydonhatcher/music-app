@@ -9,8 +9,8 @@ import {
 
 export default function SwitchCard() {
   const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true
+    online: true,
+    offline: true
   });
 
   const handleChange = name => event => {
@@ -27,9 +27,9 @@ export default function SwitchCard() {
       </CardContent>
       <CardActions>
         <Switch
-          checked={state.checkedA}
-          onChange={handleChange("checkedA")}
-          value="checkedA"
+          checked={state.online}
+          onChange={handleChange("online")}
+          value="online"
           inputProps={{ "aria-label": "secondary checkbox" }}
         />
       </CardActions>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SwitchCard from "./SwitchCard";
-import { Card, CardActions, CardContent, Typography } from "@material-ui/core";
+import SliderCard from "./SliderCard";
+import { Card, CardContent, Typography } from "@material-ui/core";
 
 class Dashboard extends Component {
   render() {
@@ -17,14 +18,7 @@ class Dashboard extends Component {
         }}
       >
         <SwitchCard />
-        <Card style={{ width: "275px", height: "200px" }} variant="outlined">
-          <CardContent>
-            <Typography variant="h6">Master Volume</Typography>
-            <Typography variant="body1">
-              Overrides all other sound settings in this application
-            </Typography>
-          </CardContent>
-        </Card>
+        <SliderCard />
         <Card style={{ width: "275px", height: "200px" }} variant="outlined">
           <CardContent>
             <Typography variant="h6">Sound Quality</Typography>
