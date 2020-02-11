@@ -2,19 +2,18 @@ import React, { Component } from "react";
 import SwitchCard from "./SwitchCard";
 import SliderCard from "./SliderCard";
 import SelectCard from "./SelectCard";
+import Greetings from "./Greetings";
 import { Card, CardContent, Typography } from "@material-ui/core";
 
 class Dashboard extends Component {
   state = {
-    notifications: ["hi"]
+    notifications: []
   };
 
   render() {
     return (
       <div>
-        <h1 style={{ textAlign: "center", fontSize: "38px", color: "gray" }}>
-          Welcome User!
-        </h1>
+        <Greetings />
         <div
           style={{
             display: "flex",
