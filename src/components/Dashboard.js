@@ -3,14 +3,39 @@ import SwitchCard from "./SwitchCard";
 import SliderCard from "./SliderCard";
 import SelectCard from "./SelectCard";
 import Greetings from "./Greetings";
+import SystemNotifications from "./SystemNotifications";
+import {
+  APPLICATION_OFFLINE,
+  HIGH_VOLUME,
+  MUSIC_QUALITY_DEGRADED
+} from "../NotificationConstants";
 import { Card, CardContent, Typography } from "@material-ui/core";
 
 class Dashboard extends Component {
   state = {
-    notifications: []
+    notifications: [],
+    onlineMode: true
+  };
+
+  handleOnlineSwitchChange = event => {
+    const onlineMode = event.target.checked;
+    let notifications = this.state.notifications;
+    if (onlineMode) {
+      notifications = notifications.filter((value, index, array) => {
+        return value != APPLICATION_OFFLINE;
+      });
+    } else {
+      notifications.push(APPLICATION_OFFLINE);
+    }
+    this.setState({
+      onlineMode: event.target.checked,
+      notifications: notifications
+    });
   };
 
   render() {
+    const notifications = this.state.notifications;
+
     return (
       <div>
         <Greetings />
@@ -21,22 +46,14 @@ class Dashboard extends Component {
             padding: "10px"
           }}
         >
-          <SwitchCard />
+          <SwitchCard
+            onlineMode={this.state.onlineMode}
+            handleOnlineSwitchChange={this.handleOnlineSwitchChange}
+          />
           <SliderCard />
           <SelectCard />
         </div>
-        <h2
-          style={{ textAlign: "left", fontSize: "30px", paddingLeft: "40px" }}
-        >
-          System Notifications:
-        </h2>
-        {this.state.notifications.map(notification => {
-          return (
-            <p style={{ fontSize: "25px", color: "red", textAlign: "center" }}>
-              {notification}
-            </p>
-          );
-        })}
+        <SystemNotifications notifications={notifications} />
       </div>
     );
   }

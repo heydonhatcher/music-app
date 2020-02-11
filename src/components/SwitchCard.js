@@ -7,15 +7,9 @@ import {
   Switch
 } from "@material-ui/core";
 
-export default function SwitchCard() {
-  const [state, setState] = React.useState({
-    online: true,
-    offline: true
-  });
-
-  const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
-  };
+const SwitchCard = props => {
+  const onlineMode = props.onlineMode;
+  const handleOnlineSwitchChange = props.handleOnlineSwitchChange;
 
   return (
     <Card
@@ -30,12 +24,14 @@ export default function SwitchCard() {
       </CardContent>
       <CardActions>
         <Switch
-          checked={state.online}
-          onChange={handleChange("online")}
+          checked={onlineMode}
+          onChange={handleOnlineSwitchChange}
           value="online"
           inputProps={{ "aria-label": "secondary checkbox" }}
         />
       </CardActions>
     </Card>
   );
-}
+};
+
+export default SwitchCard;
