@@ -18,7 +18,10 @@ export default function SwitchCard() {
   };
 
   return (
-    <Card style={{ width: "300px", height: "200px" }} variant="outlined">
+    <Card
+      style={{ width: "300px", height: "200px", margin: "10px" }}
+      variant="outlined"
+    >
       <CardContent>
         <Typography variant="h6">Online Mode</Typography>
         <Typography variant="body1">

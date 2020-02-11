@@ -30,7 +30,10 @@ export default function SelectCard() {
   };
 
   return (
-    <Card style={{ width: "300px", height: "200px" }} variant="outlined">
+    <Card
+      style={{ width: "300px", height: "200px", margin: "10px" }}
+      variant="outlined"
+    >
       <CardContent>
         <Typography variant="h6">Sound Quality</Typography>
         <Typography variant="body1">

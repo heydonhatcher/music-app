@@ -5,23 +5,32 @@ import SelectCard from "./SelectCard";
 import { Card, CardContent, Typography } from "@material-ui/core";
 
 class Dashboard extends Component {
+  state = {
+    notifications: []
+  };
+
   render() {
     return (
-      // <div>
-      //   <Typography variant="h4" style={{ color: "gray" }}>
-      //     Welcome User!
-      //   </Typography>
-      // </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          padding: "10px"
-        }}
-      >
-        <SwitchCard />
-        <SliderCard />
-        <SelectCard />
+      <div>
+        <h1 style={{ textAlign: "center", fontSize: "38px", color: "gray" }}>
+          Welcome User!
+        </h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "10px"
+          }}
+        >
+          <SwitchCard />
+          <SliderCard />
+          <SelectCard />
+        </div>
+        <h2
+          style={{ textAlign: "left", fontSize: "30px", paddingLeft: "40px" }}
+        >
+          System Notifications:
+        </h2>
       </div>
     );
   }
