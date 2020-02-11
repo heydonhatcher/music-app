@@ -27,13 +27,18 @@ class Login extends Component {
       return <Dashboard />;
     } else {
       return (
-        <div>
+        <div
+          style={{
+            padding: "100px",
+            justifyContent: "center",
+            width: "400px"
+          }}
+        >
           <form
             style={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
-              width: "500px"
+              width: "350px"
             }}
             onSubmit={this.submit}
           >

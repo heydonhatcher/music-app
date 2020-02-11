@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SwitchCard from "./SwitchCard";
 import SliderCard from "./SliderCard";
+import SelectCard from "./SelectCard";
 import { Card, CardContent, Typography } from "@material-ui/core";
 
 class Dashboard extends Component {
@@ -14,19 +15,13 @@ class Dashboard extends Component {
       <div
         style={{
           display: "flex",
-          justifyContent: "center"
+          justifyContent: "center",
+          padding: "10px"
         }}
       >
         <SwitchCard />
         <SliderCard />
-        <Card style={{ width: "275px", height: "200px" }} variant="outlined">
-          <CardContent>
-            <Typography variant="h6">Sound Quality</Typography>
-            <Typography variant="body1">
-              Manually control the music quality in event of poor connection
-            </Typography>
-          </CardContent>
-        </Card>
+        <SelectCard />
       </div>
     );
   }
