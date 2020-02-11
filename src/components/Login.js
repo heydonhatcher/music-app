@@ -29,16 +29,20 @@ class Login extends Component {
       return (
         <div
           style={{
-            padding: "100px",
-            justifyContent: "center",
-            width: "400px"
+            display: "block",
+            height: "100%",
+            width: "100%"
           }}
         >
           <form
             style={{
               display: "flex",
+              marginLeft: "auto",
+              marginRight: "auto",
               flexDirection: "column",
-              width: "350px"
+              width: "350px",
+              alignContent: "center",
+              paddingTop: "100px"
             }}
             onSubmit={this.submit}
           >
