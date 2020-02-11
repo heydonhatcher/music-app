@@ -7,62 +7,13 @@ import {
   Slider
 } from "@material-ui/core";
 
-// const marks = [
-//   {
-//     value: 0,
-//     label: "0"
-//   },
-//   {
-//     value: 10,
-//     label: "10"
-//   },
-//   {
-//     value: 20,
-//     label: "20"
-//   },
-//   {
-//     value: 30,
-//     label: "30"
-//   },
-//   {
-//     value: 40,
-//     label: "40"
-//   },
-//   {
-//     value: 50,
-//     label: "50"
-//   },
-//   {
-//     value: 60,
-//     label: "60"
-//   },
-//   {
-//     value: 70,
-//     label: "70"
-//   },
-//   {
-//     value: 80,
-//     label: "80"
-//   },
-//   {
-//     value: 90,
-//     label: "90"
-//   },
-//   {
-//     value: 100,
-//     label: "100"
-//   }
-// ];
-
 function valuetext(value) {
   return `${value}`;
 }
 
-//function valueLabelFormat(value) {
-//  return marks.findIndex(mark => mark.value === value) + 1;
-//}
-
-export default function SliderCard() {
+export default function SliderCard(props) {
+  const onChange = props.onChange;
+  const value = props.value;
   return (
     <Card
       style={{ width: "300px", height: "200px", margin: "10px" }}
@@ -76,7 +27,8 @@ export default function SliderCard() {
       </CardContent>
       <CardActions>
         <Slider
-          defaultValue={0}
+          value={value}
+          onChangeCommitted={onChange}
           getAriaValueText={valuetext}
           aria-labelledby="discrete-slider"
           valueLabelDisplay="auto"

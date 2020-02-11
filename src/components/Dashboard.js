@@ -14,7 +14,8 @@ import { Card, CardContent, Typography } from "@material-ui/core";
 class Dashboard extends Component {
   state = {
     notifications: [],
-    onlineMode: true
+    onlineMode: true,
+    volume: 0
   };
 
   handleOnlineSwitchChange = event => {
@@ -31,6 +32,17 @@ class Dashboard extends Component {
       onlineMode: event.target.checked,
       notifications: notifications
     });
+  };
+
+  handleVolumeChange = (event, value) => {
+    let notifications = this.state.notifications;
+    notifications = notifications.filter((value, index, array) => {
+      return value != HIGH_VOLUME;
+    });
+    if (value >= 80) {
+      notifications.push(HIGH_VOLUME);
+    }
+    this.setState({ volume: value, notifications: notifications });
   };
 
   render() {
@@ -50,7 +62,10 @@ class Dashboard extends Component {
             onlineMode={this.state.onlineMode}
             handleOnlineSwitchChange={this.handleOnlineSwitchChange}
           />
-          <SliderCard />
+          <SliderCard
+            onChange={this.handleVolumeChange}
+            value={this.state.volume}
+          />
           <SelectCard />
         </div>
         <SystemNotifications notifications={notifications} />
