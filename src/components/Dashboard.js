@@ -9,13 +9,13 @@ import {
   HIGH_VOLUME,
   MUSIC_QUALITY_DEGRADED
 } from "../NotificationConstants";
-import { Card, CardContent, Typography } from "@material-ui/core";
 
 class Dashboard extends Component {
   state = {
     notifications: [],
     onlineMode: true,
-    volume: 0
+    volume: 0,
+    quality: 30
   };
 
   handleOnlineSwitchChange = event => {
@@ -23,7 +23,7 @@ class Dashboard extends Component {
     let notifications = this.state.notifications;
     if (onlineMode) {
       notifications = notifications.filter((value, index, array) => {
-        return value != APPLICATION_OFFLINE;
+        return value !== APPLICATION_OFFLINE;
       });
     } else {
       notifications.push(APPLICATION_OFFLINE);
@@ -37,12 +37,26 @@ class Dashboard extends Component {
   handleVolumeChange = (event, value) => {
     let notifications = this.state.notifications;
     notifications = notifications.filter((value, index, array) => {
-      return value != HIGH_VOLUME;
+      return value !== HIGH_VOLUME;
     });
     if (value >= 80) {
       notifications.push(HIGH_VOLUME);
     }
     this.setState({ volume: value, notifications: notifications });
+  };
+
+  handleQualityChange = event => {
+    let notifications = this.state.notifications;
+    notifications = notifications.filter((value, index, array) => {
+      return value !== MUSIC_QUALITY_DEGRADED;
+    });
+    if (event.target.value === 10) {
+      notifications.push(MUSIC_QUALITY_DEGRADED);
+    }
+    this.setState({
+      quality: event.target.value,
+      notifications: notifications
+    });
   };
 
   render() {
@@ -66,7 +80,10 @@ class Dashboard extends Component {
             onChange={this.handleVolumeChange}
             value={this.state.volume}
           />
-          <SelectCard />
+          <SelectCard
+            onChange={this.handleQualityChange}
+            value={this.state.quality}
+          />
         </div>
         <SystemNotifications notifications={notifications} />
       </div>

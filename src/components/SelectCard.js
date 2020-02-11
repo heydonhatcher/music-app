@@ -21,13 +21,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SelectCard() {
+export default function SelectCard(props) {
   const classes = useStyles();
-  const [quality, setQuality] = React.useState("");
-
-  const handleChange = event => {
-    setQuality(event.target.value);
-  };
 
   return (
     <Card
@@ -46,8 +41,8 @@ export default function SelectCard() {
           <Select
             labelId="quality-select-label"
             id="quality-select"
-            value={quality}
-            onChange={handleChange}
+            value={props.value}
+            onChange={props.onChange}
           >
             <MenuItem value={10}>Low</MenuItem>
             <MenuItem value={20}>Medium</MenuItem>
